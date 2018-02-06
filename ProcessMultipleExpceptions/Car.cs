@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CustomException
+namespace ProcessMultipleExpceptions
 {
     class Car
     {
@@ -31,6 +31,10 @@ namespace CustomException
 
         public void Accelerate(int delta)
         {
+            if (delta < 0)
+                throw new
+                    ArgumentOutOfRangeException("delta", "Speed must be greater than zero!");
+
             if (carIsDead)
                 Console.WriteLine("{0} is out of order...", PetName);
             else
