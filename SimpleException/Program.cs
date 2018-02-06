@@ -14,8 +14,20 @@ namespace SimpleException
             Console.WriteLine("=> Creating a car and stepping on it!");
             Car myCar = new Car("Zippy", 20);
             myCar.CrankTunes(true);
-            for (int i = 0; i < 10; i++)
-                myCar.Accelerate(10);
+
+            try
+            {
+                for (int i = 0; i < 10; i++)
+                    myCar.Accelerate(10);
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine("\n*** Error! ***");
+                Console.WriteLine("Method: {0}", e.TargetSite);
+                Console.WriteLine("Message: {0}", e.Message);
+                Console.WriteLine("Source: {0}", e.Source);
+            }
+            Console.WriteLine("\n **** Out of exception logic *****");
             Console.ReadLine();
         }
     }
