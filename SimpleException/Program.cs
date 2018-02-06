@@ -23,7 +23,9 @@ namespace SimpleException
             catch(Exception e)
             {
                 Console.WriteLine("\n*** Error! ***");
-                Console.WriteLine("Method: {0}", e.TargetSite);
+                Console.WriteLine("Member name: {0}", e.TargetSite);
+                Console.WriteLine("Class defining member: {0}", e.TargetSite.DeclaringType);
+                Console.WriteLine("Member type: {0}", e.TargetSite.MemberType);
                 Console.WriteLine("Message: {0}", e.Message);
                 Console.WriteLine("Source: {0}", e.Source);
             }
