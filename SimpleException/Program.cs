@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
 
 namespace SimpleException
 {
@@ -30,6 +31,14 @@ namespace SimpleException
                 Console.WriteLine("Source: {0}", e.Source);
                 Console.WriteLine("Stack: {0}", e.StackTrace);
                 Console.WriteLine("HelpLink: {0}", e.HelpLink);
+
+                Console.WriteLine("\n-> Custom Data:");
+                if (e.Data != null)
+                {
+                    foreach (DictionaryEntry de in e.Data)
+                        Console.WriteLine("-> {0}: {1}", de.Key, de.Value);
+                }
+
             }
             Console.WriteLine("\n **** Out of exception logic *****");
             Console.ReadLine();
