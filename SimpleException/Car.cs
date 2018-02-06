@@ -40,7 +40,10 @@ namespace SimpleException
                 {
                     carIsDead = true;
                     CurrentSpeed = 0;
-                    throw new Exception(string.Format("{0} has overheated!", PetName));
+                    Exception ex =
+                         new Exception(string.Format("{0} has overheated!", PetName));
+                    ex.HelpLink = "http://www.CarsRUs.com";
+                    throw ex;
                 }
                 else
                     Console.WriteLine("=> CurrentSpeed = {0}", CurrentSpeed);

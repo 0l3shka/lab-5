@@ -29,6 +29,7 @@ namespace SimpleException
                 Console.WriteLine("Message: {0}", e.Message);
                 Console.WriteLine("Source: {0}", e.Source);
                 Console.WriteLine("Stack: {0}", e.StackTrace);
+                Console.WriteLine("HelpLink: {0}", e.HelpLink);
             }
             Console.WriteLine("\n **** Out of exception logic *****");
             Console.ReadLine();
