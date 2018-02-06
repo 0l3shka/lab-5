@@ -40,13 +40,10 @@ namespace CustomException
                 {
                     carIsDead = true;
                     CurrentSpeed = 0;
-                    Exception ex =
-                         new Exception(string.Format("{0} has overheated!", PetName));
-                    ex.HelpLink = "http://www.CarsRUs.com";
-
-                    ex.Data.Add("TimeStamp", string.Format("The car exploded at {0}",DateTime.Now));
-                    ex.Data.Add("Cause", "You have a lead foot.");
-
+                    CarIsDeadException ex=
+                        new CarIsDeadException(string.Format("{0} has overheated!",PetName),
+                        "You have a lead foot", DateTime.Now);
+                    ex.HelpLink = "http://www.CarsRU.com";
                     throw ex;
                 }
                 else
@@ -64,6 +61,31 @@ namespace CustomException
                 Console.WriteLine("Jamming");
             else
                 Console.WriteLine("Quiet time...");
+        }
+    }
+
+
+    public class CarIsDeadException : ApplicationException
+    {
+        private string messageDetails = String.Empty;
+        public DateTime ErrorTimeStamp { get; set; }
+        public string CauseOfError { get; set; }
+
+        public CarIsDeadException() { }
+        public CarIsDeadException(string message,string cause,DateTime time)
+        {
+            messageDetails = message;
+            CauseOfError = cause;
+            ErrorTimeStamp = time;
+
+        }
+
+        public override string Message
+        {
+            get
+            {
+                return string.Format("Car Error Message: {0}", messageDetails);
+            }
         }
     }
 }
